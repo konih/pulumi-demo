@@ -1,0 +1,19 @@
+key: cp
+metadata:
+  eam_id: PROD150
+  developers:
+    - id: a0e331b
+      name: Andreas Ley
+    - id: a1777ee
+      name: Sandro Peter Wienberg
+  mail_contact:
+    - Systems-TITP-CP@test.com
+global_roles:
+  - global_role_template_name: Admin
+rancher_projects:
+  - project_name: lecker
+    additional_labels:
+      "c15g/infrastructure": "true"
+    namespaces:
+      - name: wurstosaurus
+      - name: wurstomat
