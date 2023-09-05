@@ -5,15 +5,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"log"
 	"rancher-projects/pkg/parser"
+	"rancher-projects/pkg/util"
 )
-
-func convertToMapInput(input map[string]string) pulumi.MapInput {
-	out := pulumi.Map{}
-	for k, v := range input {
-		out[k] = pulumi.String(v)
-	}
-	return out
-}
 
 func main() {
 	config, err := parser.ParseYAML("./projects/oat/cp.yaml")
@@ -32,7 +25,7 @@ func main() {
 			for _, namespace := range project.Namespaces {
 				_, err := rancher2.NewNamespace(ctx, namespace.Name, &rancher2.NamespaceArgs{
 					Name:      pulumi.String(namespace.Name),
-					Labels:    convertToMapInput(namespace.Labels),
+					Labels:    util.ConvertToMapInput(namespace.Labels),
 					ProjectId: newProject.ID(),
 				})
 				if err != nil {

@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"gopkg.in/yaml.v3"
 	"io/ioutil"
 )
 
